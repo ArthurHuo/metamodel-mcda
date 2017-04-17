@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated demo1 -->
+      <package
+            uri="http://swen424/demo1"
+            class="mcda.demo1.mcdaPackage"
+            genModel="metamodel/demo1.genmodel"/>
+   </extension>
+
+</plugin>

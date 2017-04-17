@@ -1,0 +1,75 @@
+Task { //Language start with "Task" identifier 
+	name: "Buy a computer"; // name of the this analyze
+	description: "Find out the best option for me on the basis of multiple criteria"; //description of this analyze
+	
+	OptionType ( //define the option type, contain name, criteria and comparison matrix
+		name: "Computer";
+		Criteria ("CPU");
+		Criteria ("RAM");
+		Criteria ("HardDisk");
+		Criteria ("Price");
+		
+		ComparisonMatrix ( //define the weight between criteria
+			ComparisonPair ("CPU", "RAM", "5");
+			ComparisonPair ("CPU", "HardDisk", "7");
+			ComparisonPair ("CPU", "Price", "1");
+			ComparisonPair ("RAM", "HardDisk", "2");
+			ComparisonPair ("RAM", "Price", "1/5");
+			ComparisonPair ("HardDisk", "Price", "1/7");
+		);
+	);
+	
+	Option ( //add options, contain name, attributes and description, description is not mandatory
+		name: "Computer1";
+		"i5","4G","1T","999";
+		description: "on sale";
+	);
+	
+	Option (
+		name: "Computer2";
+		"i3","8G","2T","1800";
+	);
+	
+	Option (
+		name: "Computer3";
+		"i7","16G","1T","3000";
+	);
+	
+	//load options from csv file
+	//File ("computers.csv");
+	
+	Evaluate ( //evaluate the weight of certain attributes, in another word, mapping attribute into weight
+		criteriaName: "CPU";
+		EvaluatePair ("i3","1");
+		EvaluatePair ("i5","2");
+		EvaluatePair ("i7","4");
+	);
+	
+	Evaluate (
+		criteriaName: "RAM";
+		EvaluatePair ("4G","1");
+		EvaluatePair ("8G","2");
+		EvaluatePair ("16G","4");
+	);
+	
+	Evaluate (
+		criteriaName: "HardDisk";
+		EvaluatePair ("500G","1");
+		EvaluatePair ("1T","2");
+		EvaluatePair ("2T","4");
+	);
+	
+	Evaluate (
+		criteriaName: "Price";
+		EvaluatePair ("3000","1");
+		EvaluatePair ("1800","2");
+		EvaluatePair ("999","4");
+	);
+	
+	//apply filter to process options, for exaple, the express below drop options with RAM less than 8G
+	//Filter ("RAM", "+", "8G");
+	
+	//analyze this task using AHP method
+	Analyze ("AHP");
+
+}

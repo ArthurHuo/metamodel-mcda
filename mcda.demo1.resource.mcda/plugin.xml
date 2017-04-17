@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="mcda.demo1.resource.mcda.mopp.McdaMetaInformation" id="mcda.demo1.resource.mcda.mopp.McdaMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<super type="org.eclipse.emf.ecore.diagnostic">
+		</super>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.problem.syntax_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="mcda.demo1.resource.mcda.problem">
+		</super>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.problem.print_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="mcda.demo1.resource.mcda.problem">
+		</super>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.problem.unresolved_reference" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="mcda.demo1.resource.mcda.problem">
+		</super>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.problem.analysis_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="mcda.demo1.resource.mcda.problem">
+		</super>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.problem.builder_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="mcda.demo1.resource.mcda.problem">
+		</super>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.nature" name="mcda nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="mcda.demo1.resource.mcda.mopp.McdaNature">
+			</run>
+		</runtime>
+		<builder id="mcda.demo1.resource.mcda.builder">
+		</builder>
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="mcda.demo1.resource.mcda.builder" name="mcda Builder">
+		<builder hasNature="true">
+			<run class="mcda.demo1.resource.mcda.mopp.McdaBuilderAdapter">
+			</run>
+		</builder>
+	</extension>
+	
+	<extension-point id="mcda.demo1.resource.mcda.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="mcda.demo1.resource.mcda.mopp.McdaResourceFactoryDelegator" type="mcda">
+		</parser>
+	</extension>
+	
+	<extension-point id="mcda.demo1.resource.mcda.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.debug.core.breakpoints">
+		<breakpoint class="mcda.demo1.resource.mcda.debug.McdaLineBreakpoint" id="mcda.demo1.resource.mcda.debug.breakpoint" markerType="mcda.demo1.resource.mcda.debug.lineBreakpoint.marker" name="mcda Breakpoint">
+		</breakpoint>
+	</extension>
+	
+	<extension id="mcda.demo1.resource.mcda.debug.lineBreakpoint.marker" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.debug.core.lineBreakpointMarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<persistent value="true">
+		</persistent>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType id="mcda.demo1.resource.mcda.ui.launchConfigurationType" delegate="mcda.demo1.resource.mcda.launch.McdaLaunchConfigurationDelegate" modes="run,debug" name="mcda Application" sourceLocatorId="mcda.demo1.resource.mcda.ui.sourceLocator" sourcePathComputerId="mcda.demo1.resource.mcda.ui.sourcePathComputer" delegateName="mcda Launch Tooling" delegateDescription="This will run or debug .mcda files.">
+		</launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourcePathComputers">
+		<sourcePathComputer class="mcda.demo1.resource.mcda.debug.McdaSourcePathComputerDelegate" id="mcda.demo1.resource.mcda.ui.sourcePathComputer">
+		</sourcePathComputer>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourceLocators">
+		<sourceLocator id="mcda.demo1.resource.mcda.ui.sourceLocator" class="mcda.demo1.resource.mcda.debug.McdaSourceLocator" name="mcda Source Locator">
+		</sourceLocator>
+	</extension>
+	
+</plugin>

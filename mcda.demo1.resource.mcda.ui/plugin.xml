@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="mcda.demo1.resource.mcda.ui.McdaUIMetaInformation" id="mcda.demo1.resource.mcda.ui.McdaUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="mcda.demo1.resource.mcda.ui.McdaEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="mcda" icon="icons/editor_icon.gif" id="mcda.demo1.resource.mcda.ui.McdaEditor" name="EMFText mcda Editor">
+			<contentTypeBinding contentTypeId="mcda.demo1.resource.mcda">
+			</contentTypeBinding>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="mcda.demo1.resource.mcda.ui.McdaPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="Mcda Text Editor" id="mcda.demo1.resource.mcda.ui.McdaPreferencePage" class="mcda.demo1.resource.mcda.ui.McdaPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="mcda.demo1.resource.mcda.ui.McdaSyntaxColoringPreferencePage" class="mcda.demo1.resource.mcda.ui.McdaSyntaxColoringPreferencePage" category="mcda.demo1.resource.mcda.ui.McdaPreferencePage">
+		</page>
+		<page name="Brackets" id="mcda.demo1.resource.mcda.ui.McdaBracketPreferencePage" class="mcda.demo1.resource.mcda.ui.McdaBracketPreferencePage" category="mcda.demo1.resource.mcda.ui.McdaPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="mcda.demo1.resource.mcda.ui.McdaNewFileWizard" id="mcda.demo1.resource.mcda.ui.McdaNewFileWizard" name="EMFText .mcda file">
+		</wizard>
+		<category id="org.emftext.runtime.ui.EMFTextProjectCategory" name="EMFText Project">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextProjectCategory" icon="/icons/default_new_icon.gif" class="mcda.demo1.resource.mcda.ui.McdaNewProjectWizard" id="mcda.demo1.resource.mcda.ui.McdaNewProjectWizard" name="EMFText mcda project" project="true">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="mcda.demo1.resource.mcda.ui.McdaMarkerResolutionGenerator" markerType="mcda.demo1.resource.mcda.problem">
+		</markerResolutionGenerator>
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="mcda.demo1.resource.mcda.ui.McdaAnnotationModelFactory" extensions="mcda">
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="mcda.demo1.resource.mcda" name=".mcda File" base-type="org.eclipse.core.runtime.text" file-extensions="mcda">
+		</content-type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="mcda" id="mcda.demo1.resource.mcda.ui.provider">
+		</provider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="mcda.demo1.resource.mcda.ui.occurences">
+		</type>
+		<type name="mcda.demo1.resource.mcda.ui.occurences.declaration" super="mcda.demo1.resource.mcda.ui.occurences">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="mcda.demo1.resource.mcda.ui.occurences" label="Occurrences (in .mcda files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="mcda.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="mcda.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="mcda.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="mcda.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="mcda.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="mcda.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="mcda.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="mcda.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="mcda.occurrenceTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+		<specification annotationType="mcda.demo1.resource.mcda.ui.occurences.declaration" label="Declarations (in .mcda files)" textPreferenceKey="mcda.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="mcda.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="mcda.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="mcda.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="mcda.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="mcda.declarationTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage icon="/icons/launch_type_icon.gif" configTypeID="mcda.demo1.resource.mcda.ui.launchConfigurationType" id="mcda.mcda.launchImage">
+		</launchConfigurationTypeImage>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup type="mcda.demo1.resource.mcda.ui.launchConfigurationType" class="mcda.demo1.resource.mcda.ui.launch.McdaLaunchConfigurationTabGroup" id="mcda.mcda.launchConfigurationTabGroup" helpContextId="mcda.mcda.launchConfigHelpContext">
+			<launchMode mode="debug" perspective="org.eclipse.debug.ui.DebugPerspective" description="Debug mcda model.">
+			</launchMode>
+			<launchMode mode="run" description="Run mcda model.">
+			</launchMode>
+		</launchConfigurationTabGroup>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut label="mcda Application" icon="/icons/launch_shortcut_icon.gif" helpContextId="mcda.mcda.launch" modes="run,debug" class="mcda.demo1.resource.mcda.ui.launch.McdaLaunchShortcut" description="Launch a mcda model" id="mcda.mcda.launchShortcut">
+			<description description="Run mcda model" mode="run">
+			</description>
+			<description description="Debug mcda model" mode="debug">
+			</description>
+			<contextualLaunch>
+				<enablement>
+					<with variable="selection">
+						<count value="1">
+						</count>
+						<iterate>
+							<test property="mcda.mcda.isLaunchable">
+							</test>
+						</iterate>
+					</with>
+				</enablement>
+			</contextualLaunch>
+			<configurationType id="mcda.demo1.resource.mcda.ui.launchConfigurationType">
+			</configurationType>
+		</shortcut>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester id="mcda.mcda.PropertyTester" type="java.lang.Object" namespace="mcda.mcda" properties="isLaunchable" class="mcda.demo1.resource.mcda.ui.McdaPropertyTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="mcda.demo1.resource.mcda.ui.debug.lineBreakpoint" markerType="mcda.demo1.resource.mcda.debug.lineBreakpoint.marker" super="org.eclipse.debug.core.breakpoint">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="mcda.demo1.resource.mcda.ui.debug.lineBreakpoint" label="Breakpoints (in .mcda files)" icon="/icons/breakpoint_icon.gif" textPreferenceKey="mcda.demo1.resource.mcda.ui.lineBreakpoint" textPreferenceValue="false" highlightPreferenceKey="mcda.demo1.resource.mcda.ui.lineBreakpointHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="mcda.demo1.resource.mcda.ui.lineBreakpointIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="mcda.demo1.resource.mcda.ui.lineBreakpointIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="mcda.demo1.resource.mcda.ui.lineBreakpointColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="mcda.demo1.resource.mcda.ui.showLineBreakpointInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="mcda.demo1.resource.mcda.ui.isLineBreakpointGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="mcda.demo1.resource.mcda.ui.isLineBreakpointGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="mcda.demo1.resource.mcda.ui.lineBreakpointTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory adaptableType="mcda.demo1.resource.mcda.ui.McdaEditor" class="mcda.demo1.resource.mcda.ui.debug.McdaAdapterFactory">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+			</adapter>
+		</factory>
+		<factory adaptableType="mcda.demo1.resource.mcda.debug.McdaDebugVariable" class="mcda.demo1.resource.mcda.ui.debug.McdaAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementLabelProvider">
+			</adapter>
+		</factory>
+		<factory adaptableType="mcda.demo1.resource.mcda.debug.McdaDebugVariable" class="mcda.demo1.resource.mcda.ui.debug.McdaAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+			</adapter>
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution id="mcda.demo1.resource.mcda.ui.RulerPopupActions" targetID="mcda.demo1.resource.mcda.EditorRuler">
+			<action id="mcda.demo1.resource.mcda.ui.toggleBreakpointAction" icon="icons/breakpoint_icon.gif" label="Toggle Breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" menubarPath="debug">
+			</action>
+		</viewerContribution>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="mcda.demo1.resource.mcda.ui.McdaEditor" id="mcda.demo1.resource.mcda.ui.BreakpointRulerActions">
+			<action id="mcda.demo1.resource.mcda.ui.debug.RulerToggleBreakpointAction" label="Add breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" actionID="RulerDoubleClick">
+			</action>
+		</editorContribution>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.debugModelPresentations">
+		<debugModelPresentation id="mcda.demo1.resource.mcda.debugModel" class="mcda.demo1.resource.mcda.ui.debug.McdaDebugModelPresentation">
+		</debugModelPresentation>
+	</extension>
+	
+</plugin>

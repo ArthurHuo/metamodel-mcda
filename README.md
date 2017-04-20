@@ -1,4 +1,5 @@
-# metamodel-mcda
+# Metamodel-MCDA
+
 A metamodel for a new Multiple-criteria decision analysis language
 
 screenshots：

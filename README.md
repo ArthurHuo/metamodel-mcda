@@ -1,6 +1,7 @@
 # metamodel-mcda
 A metamodel for a new Multiple-criteria decision analysis language
 
+screenshots：
 
 ![image](https://github.com/ArthurHuo/metamodel-mcda/raw/master/screenshots/LanguageDefinition.jpg)
 
